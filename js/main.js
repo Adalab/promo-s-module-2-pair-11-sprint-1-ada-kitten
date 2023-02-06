@@ -26,31 +26,6 @@ const kittenThreeDesc =
   " Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.";
 const kittenThreeRace = "Maine Coon";
 
-const kittenTwo = `<li class="card">
-            <img
-              class="card_img"
-              src= ${kittenTwoImage}
-              alt="sphynx-cat"
-            />
-            <h3 class="card_title">${kittenTwoName}</h3>
-            <h4 class="card_race">${kittenTwoRace}</h4>
-            <p class="card_description">
-            ${kittenTwoDesc}
-            </p>
-          </li>`;
-
-const kittenThree = `<li class="card">
-            <img
-              class="card_img"
-              src=${kittenThreeImage}
-              alt="maine-coon-cat"
-            />
-            <h3 class="card_title">${kittenThreeName}</h3>
-            <h4 class="card_race">${kittenThreeRace}</h4>
-            <p class="card_description">
-            ${kittenThreeDesc}
-            </p>
-          </li>`;
 
 // listKitten.innerHTML = kittenOne + kittenTwo + kittenThree;
 
@@ -74,3 +49,55 @@ if (kittenOneDesc.includes(descrSearchText)) {
 
   listKitten.innerHTML = kittenOne;
 }
+
+if (kittenTwoDesc.includes(descrSearchText)) {
+  const kittenTwo = `<li class="card">
+            <img
+              class="card_img"
+              src= ${kittenTwoImage}
+              alt="sphynx-cat"
+            />
+            <h3 class="card_title">${kittenTwoName}</h3>
+            <h4 class="card_race">${kittenTwoRace}</h4>
+            <p class="card_description">
+            ${kittenTwoDesc}
+            </p>
+          </li>`;
+
+  listKitten.innerHTML = kittenTwo;
+}
+
+if (kittenThreeDesc.includes(descrSearchText)) {
+  const kittenThree = `<li class="card">
+            <img
+              class="card_img"
+              src=${kittenThreeImage}
+              alt="maine-coon-cat"
+            />
+            <h3 class="card_title">${kittenThreeName}</h3>
+            <h4 class="card_race">${kittenThreeRace}</h4>
+            <p class="card_description">
+            ${kittenThreeDesc}
+            </p>
+          </li>`;
+
+  listKitten.innerHTML = kittenThree;
+}
+
+
+//evento click plus
+
+const clicPlus = document.querySelector ('.js-plus');
+
+clicPlus.addEventListener ('click',() => {
+  const newForm = document.querySelector ('.js-new-form');
+  if (
+    newForm.classList.contains ('collapsed')
+  ) {
+    newForm.classList.remove ('collapsed')
+  } else (
+    newForm.classList.add ('collapsed')
+  )
+
+   
+})
