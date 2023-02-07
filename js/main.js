@@ -85,19 +85,45 @@ if (kittenThreeDesc.includes(descrSearchText)) {
 }
 
 
-//evento click plus
 
-const clicPlus = document.querySelector ('.js-plus');
+// 
 
-clicPlus.addEventListener ('click',() => {
-  const newForm = document.querySelector ('.js-new-form');
+const addKitten = document.querySelector('.js-btn-add');
+
+addKitten.addEventListener('click', () => {
+  const inputDesc = document.querySelector('.js-input-desc');
+  const inputPhoto = document.querySelector('.js-input-photo');
+  const inputName = document.querySelector('.js-input-name');
+  const labelMessageError = document.querySelector('.js-label-error');
+
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+    labelMessageError.innerHTML = 'Uy, parece que has olvidado algo'
+  }
+});
+
+const newForm = document.querySelector('.js-new-form');
+
+function showNewCatForm() {
+  newForm.classList.remove('collapsed')
+}
+
+function hideNewCatForm() {
+  newForm.classList.add('collapsed');
+}
+
+const clicPlus = document.querySelector('.js-plus');
+
+clicPlus.addEventListener('click', handleClickNewCatForm);
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
   if (
-    newForm.classList.contains ('collapsed')
-  ) {
-    newForm.classList.remove ('collapsed')
-  } else (
-    newForm.classList.add ('collapsed')
-  )
-
-   
-})
+    newForm.classList.contains('collapsed')) {
+    showNewCatForm
+  } else { hideNewCatForm }
+}
+// como se pone la función?  
