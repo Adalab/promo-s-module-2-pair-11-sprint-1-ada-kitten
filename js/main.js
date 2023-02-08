@@ -26,7 +26,6 @@ const kittenThreeDesc =
   " Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.";
 const kittenThreeRace = "Maine Coon";
 
-
 // listKitten.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 const input_search_desc = document.querySelector(".js_in_search_desc");
@@ -84,46 +83,71 @@ if (kittenThreeDesc.includes(descrSearchText)) {
   listKitten.innerHTML = kittenThree;
 }
 
+//
 
+const addKitten = document.querySelector(".js-btn-add");
 
-// 
+const inputDesc = document.querySelector(".js-input-desc");
+const inputPhoto = document.querySelector(".js-input-photo");
+const inputName = document.querySelector(".js-input-name");
+const labelMessageError = document.querySelector(".js-label-error");
+const inputRace = document.querySelector(".js-input-race");
 
-const addKitten = document.querySelector('.js-btn-add');
+const valueDesc = inputDesc.value;
+const valuePhoto = inputPhoto.value;
+const valueName = inputName.value;
+const valueRace = inputRace.value;
 
-addKitten.addEventListener('click', () => {
-  const inputDesc = document.querySelector('.js-input-desc');
-  const inputPhoto = document.querySelector('.js-input-photo');
-  const inputName = document.querySelector('.js-input-name');
-  const labelMessageError = document.querySelector('.js-label-error');
-
-  const valueDesc = inputDesc.value;
-  const valuePhoto = inputPhoto.value;
-  const valueName = inputName.value;
-
-  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
-    labelMessageError.innerHTML = 'Uy, parece que has olvidado algo'
+addKitten.addEventListener("click", () => {
+  if (valueDesc === "" || valuePhoto === "" || valueName === "") {
+    labelMessageError.innerHTML = "Uy, parece que has olvidado algo";
   }
 });
 
-const newForm = document.querySelector('.js-new-form');
+const newForm = document.querySelector(".js-new-form");
 
 function showNewCatForm() {
-  newForm.classList.remove('collapsed')
+  newForm.classList.remove("collapsed");
 }
 
 function hideNewCatForm() {
-  newForm.classList.add('collapsed');
+  newForm.classList.add("collapsed");
 }
 
-const clicPlus = document.querySelector('.js-plus');
+const clicPlus = document.querySelector(".js-plus");
 
-clicPlus.addEventListener('click', handleClickNewCatForm);
+clicPlus.addEventListener("click", handleClickNewCatForm);
 
-function handleClickNewCatForm(event) {
+function handleClickNewCatForm() {
+  if (newForm.classList.contains("collapsed")) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+
+addKitten.addEventListener("click", addNewKitten);
+
+function addNewKitten(event) {
   event.preventDefault();
-  if (
-    newForm.classList.contains('collapsed')) {
-    showNewCatForm
-  } else { hideNewCatForm }
+  listKitten.innerHTML += renderKitten(valuePhoto, valueDesc, valueName, valueRace);
 }
-// como se pone la función?  
+
+function renderKitten(url, desc, name, race) {
+  `<li class="card">
+<article>
+  <img
+    class="card_img"
+    src=${url}
+    alt="siames-cat"
+  />
+  <h3 class="card_title">${name}</h3>
+  <h4 class="card_race">${race}</h4>
+  <p class="card_description">${desc}
+  </p>
+</article>
+</li>`
+}
+
+// uy has olvidad algo, falla algo. 
+// acabar listado de crear un nuevo gatito. 
