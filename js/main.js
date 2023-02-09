@@ -6,6 +6,8 @@ const newForm = document.querySelector('.js-new-form');
 newForm.classList.remove ('collapsed');
 */
 
+// declarar const con los datos de los gatos que ya tenemos
+
 const listKitten = document.querySelector(".js-list");
 
 const kittenOneImage = "https://dev.adalab.es/gato-siames.webp";
@@ -27,6 +29,9 @@ const kittenThreeDesc =
 const kittenThreeRace = "Maine Coon";
 
 // listKitten.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+
+// darle una función al boton description
 
 const input_search_desc = document.querySelector(".js_in_search_desc");
 const descrSearchText = input_search_desc.value;
@@ -93,16 +98,9 @@ const inputName = document.querySelector(".js-input-name");
 const labelMessageError = document.querySelector(".js-label-error");
 const inputRace = document.querySelector(".js-input-race");
 
-const valueDesc = inputDesc.value;
-const valuePhoto = inputPhoto.value;
-const valueName = inputName.value;
-const valueRace = inputRace.value;
 
-addKitten.addEventListener("click", () => {
-  if (valueDesc === "" || valuePhoto === "" || valueName === "") {
-    labelMessageError.innerHTML = "Uy, parece que has olvidado algo";
-  }
-});
+
+
 
 const newForm = document.querySelector(".js-new-form");
 
@@ -126,15 +124,19 @@ function handleClickNewCatForm() {
   }
 }
 
-addKitten.addEventListener("click", addNewKitten);
+// que el botón añadir, añada un nuevo gatito 
 
 function addNewKitten(event) {
   event.preventDefault();
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  const valueRace = inputRace.value;
   listKitten.innerHTML += renderKitten(valuePhoto, valueDesc, valueName, valueRace);
-}
+};
 
 function renderKitten(url, desc, name, race) {
-  `<li class="card">
+  const HTML = `<li class="card">
 <article>
   <img
     class="card_img"
@@ -147,7 +149,20 @@ function renderKitten(url, desc, name, race) {
   </p>
 </article>
 </li>`
-}
+  return HTML
+};
 
-// uy has olvidad algo, falla algo. 
+addKitten.addEventListener("click", () => {
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  const valueRace = inputRace.value;
+  if (valueDesc === " " || valuePhoto === " " || valueName === " ") {
+    labelMessageError.innerHTML = "Uy, parece que has olvidado algo";
+  } else { addNewKitten() }
+
+});
+// addKitten.addEventListener("click", addNewKitten);
+
+
 // acabar listado de crear un nuevo gatito. 
