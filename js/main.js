@@ -1,12 +1,7 @@
 "use strict";
 
-/*
-const newForm = document.querySelector('.js-new-form');
-
-newForm.classList.remove ('collapsed');
-*/
-
-// declarar const con los datos de los gatos que ya tenemos
+// DECLARAR CONST DEL LISTADO DE GATOS Y DE LOS DATOS DE CADA GATO
+// como Bonus ponía poner el name en MAYUS, pero no me sale :( 
 
 const listKitten = document.querySelector(".js-list");
 
@@ -15,94 +10,121 @@ const kittenOneName = "Anastacio";
 const kittenOneDesc =
   "Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.";
 const kittenOneRace = "Siamés";
+const kittenOne = `<li class="card">
+  <article>
+    <img
+      class="card_img"
+      src=${kittenOneImage}
+      alt="siames-cat"
+    />
+    <h3 class="card_title">${kittenOneName}</h3>
+    <h4 class="card_race">${kittenOneRace}</h4>
+    <p class="card_description">${kittenOneDesc}
+    </p>
+  </article>
+  </li>`;
 
 const kittenTwoImage = "https://dev.adalab.es/sphynx-gato.webp";
 const kittenTwoName = "Fiona";
 const kittenTwoDesc =
   "Produce fascinación y curiosidad. Exótico, raro, bello, extraño…hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.";
 const kittenTwoRace = "Sphynx";
+const kittenTwo = `<li class="card">
+              <img
+                class="card_img"
+                src= ${kittenTwoImage}
+                alt="sphynx-cat"
+              />
+              <h3 class="card_title">${kittenTwoName}</h3>
+              <h4 class="card_race">${kittenTwoRace}</h4>
+              <p class="card_description">
+              ${kittenTwoDesc}
+              </p>
+            </li>`;
 
 const kittenThreeImage = "https://dev.adalab.es/maine-coon-cat.webp";
 const kittenThreeName = "Cielo";
 const kittenThreeDesc =
   " Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.";
 const kittenThreeRace = "Maine Coon";
+const kittenThree = `<li class="card">
+              <img
+                class="card_img"
+                src=${kittenThreeImage}
+                alt="maine-coon-cat"
+              />
+              <h3 class="card_title">${kittenThreeName}</h3>
+              <h4 class="card_race">${kittenThreeRace}</h4>
+              <p class="card_description">
+              ${kittenThreeDesc}
+              </p>
+            </li>`;
 
-// listKitten.innerHTML = kittenOne + kittenTwo + kittenThree;
+listKitten.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+// DARLE FUNCIÓN AL INPUT DESCRIPTION (filtrar por busqueda)
+
+// const input_search_desc = document.querySelector(".js_in_search_desc");
+// const descrSearchText = input_search_desc.value;
+
+// if (kittenOneDesc.includes(descrSearchText)) {
+//   const kittenOne = `<li class="card">
+// <article>
+//   <img
+//     class="card_img"
+//     src=${kittenOneImage}
+//     alt="siames-cat"
+//   />
+//   <h3 class="card_title">${kittenOneName}</h3>
+//   <h4 class="card_race">${kittenOneRace}</h4>
+//   <p class="card_description">${kittenOneDesc}
+//   </p>
+// </article>
+// </li>`;
+
+//   listKitten.innerHTML = kittenOne;
+// }
+
+// if (kittenTwoDesc.includes(descrSearchText)) {
+//   const kittenTwo = `<li class="card">
+//             <img
+//               class="card_img"
+//               src= ${kittenTwoImage}
+//               alt="sphynx-cat"
+//             />
+//             <h3 class="card_title">${kittenTwoName}</h3>
+//             <h4 class="card_race">${kittenTwoRace}</h4>
+//             <p class="card_description">
+//             ${kittenTwoDesc}
+//             </p>
+//           </li>`;
+
+//   listKitten.innerHTML += kittenTwo;
+// }
+
+// if (kittenThreeDesc.includes(descrSearchText)) {
+//   const kittenThree = `<li class="card">
+//             <img
+//               class="card_img"
+//               src=${kittenThreeImage}
+//               alt="maine-coon-cat"
+//             />
+//             <h3 class="card_title">${kittenThreeName}</h3>
+//             <h4 class="card_race">${kittenThreeRace}</h4>
+//             <p class="card_description">
+//             ${kittenThreeDesc}
+//             </p>
+//           </li>`;
+
+//   listKitten.innerHTML += kittenThree;
+// }
+// nota para Nuria: para que se mostraran los 3 gatitos, solo añadí el + delante de cada =
 
 
-// darle una función al boton description
-
-const input_search_desc = document.querySelector(".js_in_search_desc");
-const descrSearchText = input_search_desc.value;
-
-if (kittenOneDesc.includes(descrSearchText)) {
-  const kittenOne = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src=${kittenOneImage}
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${kittenOneName}</h3>
-  <h4 class="card_race">${kittenOneRace}</h4>
-  <p class="card_description">${kittenOneDesc}
-  </p>
-</article>
-</li>`;
-
-  listKitten.innerHTML = kittenOne;
-}
-
-if (kittenTwoDesc.includes(descrSearchText)) {
-  const kittenTwo = `<li class="card">
-            <img
-              class="card_img"
-              src= ${kittenTwoImage}
-              alt="sphynx-cat"
-            />
-            <h3 class="card_title">${kittenTwoName}</h3>
-            <h4 class="card_race">${kittenTwoRace}</h4>
-            <p class="card_description">
-            ${kittenTwoDesc}
-            </p>
-          </li>`;
-
-  listKitten.innerHTML = kittenTwo;
-}
-
-if (kittenThreeDesc.includes(descrSearchText)) {
-  const kittenThree = `<li class="card">
-            <img
-              class="card_img"
-              src=${kittenThreeImage}
-              alt="maine-coon-cat"
-            />
-            <h3 class="card_title">${kittenThreeName}</h3>
-            <h4 class="card_race">${kittenThreeRace}</h4>
-            <p class="card_description">
-            ${kittenThreeDesc}
-            </p>
-          </li>`;
-
-  listKitten.innerHTML = kittenThree;
-}
-
-//
-
-const addKitten = document.querySelector(".js-btn-add");
-
-const inputDesc = document.querySelector(".js-input-desc");
-const inputPhoto = document.querySelector(".js-input-photo");
-const inputName = document.querySelector(".js-input-name");
-const labelMessageError = document.querySelector(".js-label-error");
-const inputRace = document.querySelector(".js-input-race");
-
-
-
-
+//MOSTRAR U OCULTAR FORMULARIO DE NUEVO GATITO
 
 const newForm = document.querySelector(".js-new-form");
+const clicPlus = document.querySelector(".js-plus");
 
 function showNewCatForm() {
   newForm.classList.remove("collapsed");
@@ -111,8 +133,6 @@ function showNewCatForm() {
 function hideNewCatForm() {
   newForm.classList.add("collapsed");
 }
-
-const clicPlus = document.querySelector(".js-plus");
 
 clicPlus.addEventListener("click", handleClickNewCatForm);
 
@@ -123,8 +143,15 @@ function handleClickNewCatForm() {
     hideNewCatForm();
   }
 }
+//  QUE EL BOTÓN AÑADIR AÑADA UN NUEVO GATITO
 
-// que el botón añadir, añada un nuevo gatito 
+const addKitten = document.querySelector(".js-btn-add");
+
+const inputDesc = document.querySelector(".js-input-desc");
+const inputPhoto = document.querySelector(".js-input-photo");
+const inputName = document.querySelector(".js-input-name");
+
+const inputRace = document.querySelector(".js-input-race");
 
 function addNewKitten(event) {
   event.preventDefault();
@@ -152,17 +179,74 @@ function renderKitten(url, desc, name, race) {
   return HTML
 };
 
-addKitten.addEventListener("click", () => {
+addKitten.addEventListener("click", addNewKitten);
+
+// SI LOS CAMPOS ESTÁN VACÍOS QUE SALGA UN MENSAJE
+
+const labelMessageError = document.querySelector(".js-label-error");
+
+
+addKitten.addEventListener("click", (event) => {
+  event.preventDefault()
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
-  const valueRace = inputRace.value;
-  if (valueDesc === " " || valuePhoto === " " || valueName === " ") {
+  if (valueDesc === "" || valuePhoto === "" || valueName === "") {
     labelMessageError.innerHTML = "Uy, parece que has olvidado algo";
-  } else { addNewKitten() }
+  } else {
+    addNewKitten()
+  }
 
 });
-// addKitten.addEventListener("click", addNewKitten);
+
+// NUEVO!!!!
+// OCULTAR FORMULARIO SI LE DOY A CANCELAR
+
+const cancelKitten = document.querySelector('.js-btn-cancel');
+
+function cancelNewkitten(event) {
+  event.preventDefault()
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  const valueRace = inputRace.value
+  const valueDesc = inputDesc.value;
+
+  newForm.classList.add("collapsed");
+  inputPhoto.value = '';
+  inputPhoto.placeholder = 'URL de la foto';
+  inputName.value = '';
+  inputName.placeholder = 'Nombre';
+  inputRace.value = '';
+  inputRace.placeholder = 'Raza';
+  inputDesc.value = '';
+  inputDesc.placeholder = 'Descripción';
+  labelMessageError.innerHTML = ' ';
+}
+
+cancelKitten.addEventListener('click', cancelNewkitten);
+
+// FILTRAR POR DESCRIPCIÓN PERO USANDO EL BOTÓN BUSCAR
+
+const input_search_desc = document.querySelector(".js-desc-search");
+const btn_search = document.querySelector('.js-btnSearch');
 
 
-// acabar listado de crear un nuevo gatito. 
+function handleClickSearch(event) {
+  event.preventDefault()
+  const descrSearchText = input_search_desc.value;
+  console.log(descrSearchText)
+  listKitten.innerHTML = '';
+  if (kittenOneDesc.includes(descrSearchText)) {
+    listKitten.innerHTML += kittenOne;
+  }
+  if (kittenTwoDesc.includes(descrSearchText)) {
+    listKitten.innerHTML += kittenTwo;
+  }
+  if (kittenThreeDesc.includes(descrSearchText)) {
+    listKitten.innerHTML += kittenThree;
+  };
+};
+btn_search.addEventListener('click', handleClickSearch)
+
+
+// esto último no funciona, no filtra por palabra y me muestra lo que le da la gana.
