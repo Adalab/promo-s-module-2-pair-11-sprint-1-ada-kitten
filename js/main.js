@@ -153,33 +153,33 @@ const inputName = document.querySelector(".js-input-name");
 
 const inputRace = document.querySelector(".js-input-race");
 
-function addNewKitten(event) {
-  event.preventDefault();
-  const valueDesc = inputDesc.value;
-  const valuePhoto = inputPhoto.value;
-  const valueName = inputName.value;
-  const valueRace = inputRace.value;
-  listKitten.innerHTML += renderKitten(valuePhoto, valueDesc, valueName, valueRace);
-};
+// function addNewKitten(event) {
+//   event.preventDefault();
+//   const valueDesc = inputDesc.value;
+//   const valuePhoto = inputPhoto.value;
+//   const valueName = inputName.value;
+//   const valueRace = inputRace.value;
+//   listKitten.innerHTML += renderKitten(valuePhoto, valueDesc, valueName, valueRace);
+// };
 
-function renderKitten(url, desc, name, race) {
-  const HTML = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src=${url}
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${name}</h3>
-  <h4 class="card_race">${race}</h4>
-  <p class="card_description">${desc}
-  </p>
-</article>
-</li>`
-  return HTML
-};
+// function renderKitten(url, desc, name, race) {
+//   const HTML = `<li class="card">
+// <article>
+//   <img
+//     class="card_img"
+//     src=${url}
+//     alt="siames-cat"
+//   />
+//   <h3 class="card_title">${name}</h3>
+//   <h4 class="card_race">${race}</h4>
+//   <p class="card_description">${desc}
+//   </p>
+// </article>
+// </li>`
+//   return HTML
+// };
 
-addKitten.addEventListener("click", addNewKitten);
+// addKitten.addEventListener("click", addNewKitten);
 
 // SI LOS CAMPOS ESTÁN VACÍOS QUE SALGA UN MENSAJE
 
@@ -194,7 +194,7 @@ addKitten.addEventListener("click", (event) => {
   if (valueDesc === "" || valuePhoto === "" || valueName === "") {
     labelMessageError.innerHTML = "Uy, parece que has olvidado algo";
   } else {
-    addNewKitten()
+    addNewKitten(event)
   }
 
 });
@@ -213,14 +213,10 @@ function cancelNewkitten(event) {
 
   newForm.classList.add("collapsed");
   inputPhoto.value = '';
-  inputPhoto.placeholder = 'URL de la foto';
   inputName.value = '';
-  inputName.placeholder = 'Nombre';
   inputRace.value = '';
-  inputRace.placeholder = 'Raza';
   inputDesc.value = '';
-  inputDesc.placeholder = 'Descripción';
-  labelMessageError.innerHTML = ' ';
+  labelMessageError.innerHTML = '';
 }
 
 cancelKitten.addEventListener('click', cancelNewkitten);
@@ -244,9 +240,67 @@ function handleClickSearch(event) {
   }
   if (kittenThreeDesc.includes(descrSearchText)) {
     listKitten.innerHTML += kittenThree;
-  };
+  }
+  if (descrSearchText === '') {
+    listKitten.innerHTML = 'Uy, no has escrito nada'
+  }
 };
+
 btn_search.addEventListener('click', handleClickSearch)
 
+// CONVERTIR CADA GATITO EN UN OBJETO
 
-// esto último no funciona, no filtra por palabra y me muestra lo que le da la gana.
+const kittenData_1 = {
+  image: "https://dev.adalab.es/gato-siames.webp",
+  name: "Anastacio",
+  desc: "Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.",
+  race: "Siamés"
+}
+const kittenData_2 = {
+  image: "https://dev.adalab.es/sphynx-gato.webp",
+  name: "Fiona",
+  desc: "Produce fascinación y curiosidad. Exótico, raro, bello, extraño…hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.",
+  race: "Sphynx"
+}
+const kittenData_3 = {
+  image: "https://dev.adalab.es/maine-coon-cat.webp",
+  name: "Cielo",
+  desc: " Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.",
+  race: "Maine Coon"
+};
+
+function renderKitten(object) {
+  const HTML = `<li class="card">
+<article>
+  <img
+    class="card_img"
+    src=${object.image}
+    alt="siames-cat"
+  />
+  <h3 class="card_title">${object.name}</h3>
+  <h4 class="card_race">${object.race}</h4>
+  <p class="card_description">${object.desc}
+  </p>
+</article>
+</li>`
+  return HTML
+};
+
+function addNewKitten(event) {
+  event.preventDefault();
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  const valueRace = inputRace.value;
+
+  const newKitten = {
+    image: valuePhoto,
+    name: valueName,
+    desc: valueDesc,
+    race: valueRace
+  };
+  console.log(valueName)
+  listKitten.innerHTML += renderKitten(kittenData_1 + kittenData_2 + kittenData_3 + newKitten);
+};
+
+addKitten.addEventListener("click", addNewKitten);
